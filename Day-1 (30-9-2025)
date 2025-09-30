@@ -1,0 +1,190 @@
+LINK :- https://www.geeksforgeeks.org/problems/parenthesis-checker2744/1
+
+Parenthesis Checker
+--------------------
+
+
+class Solution {
+    public boolean isBalanced(String s) {
+        // code here
+        
+        Stack<Character>stack=new Stack<>();
+        for(char ch:s.toCharArray()){
+            if(ch=='(' || ch=='{' || ch=='[' ){
+                stack.push(ch);
+            }else{
+                
+                if(stack.isEmpty())
+                return false;
+                
+                int top=stack.pop();
+                
+                if(ch==')' && top!='(' || ch=='}' && top!='{' || ch==']' && top!='['){
+                    return false;
+                }
+            }
+            
+        
+        }
+        return stack.isEmpty();
+
+    }
+}
+
+
+
+-------------------------------------------------------------------------------
+https://leetcode.com/submissions/detail/1787131382/
+
+
+Sort Characters By Frequency
+----------------------------
+
+
+class Solution {
+    public String frequencySort(String s) {
+        
+
+        HashMap<Character,Integer>freq=new HashMap<>();
+
+        for(char ch:s.toCharArray()){
+            freq.put(ch,freq.getOrDefault(ch,0)+1);
+        }
+
+        StringBuilder sb=new StringBuilder();
+
+        while(!freq.isEmpty()){
+
+            Map.Entry <Character,Integer> comingEntry=findMax(freq);
+            char ch=comingEntry.getKey();
+            int value=comingEntry.getValue();
+            while(value!=0){
+                sb.append(ch);
+                value--;
+            }
+
+            freq.remove(ch);
+        }
+
+        return sb.toString();
+
+
+        
+    }
+
+    public Map.Entry<Character,Integer> findMax(Map<Character,Integer> map){
+
+        Map.Entry<Character,Integer> max=null;
+        for(Map.Entry<Character,Integer> mm:map.entrySet()){
+
+            if(max==null || mm.getValue()>max.getValue())
+            {
+                max=mm;
+            }
+        }
+
+        return max;
+
+    }
+}
+
+
+---------------------------------------------------------------------------
+https://leetcode.com/problems/running-sum-of-1d-array/description/
+
+
+Running Sum of 1d Array
+-----------------------
+
+
+class Solution {
+    public int[] runningSum(int[] nums) {
+        
+        int sum=nums[0];
+        for(int i=1;i<nums.length;i++){
+            sum=sum+nums[i];
+            nums[i]=sum;
+        }
+        return nums;
+    }
+}
+
+
+
+---------------------------------------------------------------------------
+https://leetcode.com/problems/container-with-most-water/
+
+
+
+Container With Most Water
+-------------------------
+
+
+class Solution {
+    public int maxArea(int[] height) {
+        
+        int left=0,right=height.length-1;
+
+        int max=0;
+        while(left<right){
+
+            int minHeight=Math.min(height[left],height[right]);
+            int area=minHeight*(right-left);
+            max=Math.max(max,area);
+
+            if(height[left]<height[right])
+            left++;
+            else
+            right--;
+        }
+        return max;
+    }
+}
+
+
+---------------------------------------------------------------------------
+https://leetcode.com/problems/find-pivot-index/description/
+
+
+Find Pivot Index
+-----------------
+
+
+class Solution {
+    public int pivotIndex(int[] nums) {
+
+        int total=0;
+        for(int num:nums){
+            total+=num;
+        }
+
+        int left=0;
+        for(int i=0;i<nums.length;i++){
+
+            int right=total-left-nums[i];
+
+            if(left==right){
+                return i;
+            }
+            left+=nums[i];
+
+        }
+
+        return -1;
+        
+    }
+}
+
+
+
+---------------------------------------------------------------------------
+
+
+
+https://github.com/karthikreddy-7/TCS-NQT-CODING-SHEET/tree/main/Previously_Asked_Coding_Question
+
+
+ANSWER IN ECLIPSE SEE THERE..........(5-Question)
+----------------------------------------------------------------------------
+
+
