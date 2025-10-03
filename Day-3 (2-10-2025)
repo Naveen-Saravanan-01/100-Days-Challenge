@@ -1,0 +1,49 @@
+RE-Solved String Easy, Medium level problems...Code already in gitHub and Notes...
+
+NEW:-
+
+Sum of Beauty of All Substrings
+--------------------------------
+
+
+class Solution {
+    public int beautySum(String s) {
+        
+        int sum=0;
+        for(int i=0;i<s.length();i++){
+            int[] arr=new int[26];
+            for(int j=i;j<s.length();j++){
+                arr[s.charAt(j)-'a']++;
+                int beauty=getMax(arr)-getMin(arr);
+            sum+=beauty;
+            }
+            
+        }
+        return sum;
+    }
+
+    public int getMax(int[] arr){
+        int max=Integer.MIN_VALUE;
+
+        for(int num:arr){
+            if(max<num){
+                max=num;
+            }
+        }
+        return max;
+    }
+
+    public int getMin(int[] arr){
+        int min=Integer.MAX_VALUE;
+
+        for(int num:arr){
+            if(num!=0 && num<=min){
+                min=num;
+            }
+        }
+        return min;
+    }
+}
+
+
+-------------------------------------------------------
