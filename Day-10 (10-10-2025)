@@ -1,0 +1,64 @@
+BIT MANIPULATION
+-----------------
+
+
+Minimum Bit Flips to Convert Number
+------------------------------------
+class Solution {
+    public int minBitFlips(int start, int goal) {
+        
+        int ans=start^goal;
+
+        int cnt=0;
+        while(ans!=0){
+            ans=ans&ans-1;
+            cnt++;
+        }
+
+        return cnt;
+    }
+}
+
+-------------------------------------------------------------------
+
+ Single Number
+---------------
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        
+        int num=0;
+
+        for(int i=0;i<nums.length;i++){
+            num=num^nums[i];
+        }
+        return num;
+    }
+}
+
+---------------------------------------------------------------------
+
+Subsets
+--------
+
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        
+        List<List<Integer>>outer=new ArrayList<>();
+
+        int n=1<<nums.length;
+        for(int i=0;i<n;i++){
+            List<Integer>inner=new ArrayList<>();
+            for(int j=0;j<nums.length;j++){
+
+                if(((i>>j)&1) !=0)
+                inner.add(nums[j]);
+            }
+            outer.add(inner);
+        }
+       
+        return outer;
+    }
+}
+
+-----------------------------------------------------------
