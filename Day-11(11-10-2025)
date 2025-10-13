@@ -1,0 +1,144 @@
+BINARY SEARCH MANIPULATION;-
+-----------------------------
+
+Binary search
+---------------
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int start=0,end=nums.length-1;
+        while(start<=end){
+            int mid=(start+end)/2;
+
+            if(nums[mid]==target){
+                return mid;
+            }else if(nums[mid]<target){
+                start=mid+1;
+            }else{
+                end=mid-1;
+            }
+
+        }
+        return -1;
+    }
+}
+
+
+
+---------------------------------------------------------
+
+
+Lower bound
+-----------
+
+class Solution {
+    int lowerBound(int[] arr, int target) {
+        // code here
+        
+        int low=0,high=arr.length-1;
+        int ans=arr.length;
+        while(low<=high){
+            int mid=(low+high)/2;
+            
+            if(arr[mid]>=target){
+                ans=mid;
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+            
+        }
+        return ans;
+    }
+}
+
+
+-------------------------------------------------------
+
+
+Upper bound
+-----------
+
+
+class Solution {
+    int upperBound(int[] arr, int target) {
+        // code here
+        
+        int low=0,high=arr.length-1;
+        int ans=arr.length;
+        while(low<=high){
+            int mid=(low+high)/2;
+            
+            if(arr[mid]>target){
+                ans=mid;
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+            
+        }
+        return ans;
+        
+    }
+}
+
+
+------------------------------------------------------
+
+
+Floor;-
+-------
+
+
+class Solution {
+    public int findFloor(int[] arr, int x) {
+        // code here
+        
+        int low=0,high=arr.length-1;
+        int ans=-1;
+        
+        while(low<=high){
+            int mid=(low+high)/2;
+            
+            if(arr[mid]<=x){
+                ans=mid;
+                low=mid+1;
+            }else{
+                high=mid-1;
+            }
+        }
+        return ans;
+    }
+}
+
+
+--------------------------------------------------------
+
+Ceil;-
+--------
+
+
+// User function Template for Java
+class Solution {
+    public int findCeil(int[] arr, int x) {
+        // code here
+        
+        int low=0,high=arr.length-1;
+        int ans=-1;
+        
+        while(low<=high){
+            int mid=(low+high)/2;
+            
+            if(arr[mid]>=x){
+                ans=mid;
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+        }
+        return ans;
+    }
+}
+
+
+--------------------------------------------------
